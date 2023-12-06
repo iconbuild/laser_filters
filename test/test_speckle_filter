@@ -23,7 +23,7 @@ class TestSpeckleFilter(unittest.TestCase):
 
         rospy.init_node('test_speckle_filter_distance')
         num_beams = 11
-        rospy.Publisher("scan", LaserScan, queue_size=1, latch=True).publish(LaserScan(
+        rospy.Publisher("test_speckle_scan", LaserScan, queue_size=1, latch=True).publish(LaserScan(
             header=Header(
                 frame_id="laser",
                 stamp=rospy.Time.now()

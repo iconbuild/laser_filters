@@ -77,7 +77,7 @@ public:
       : nh_(nh),
         tf_(buffer_),
         buffer_(nh_->get_clock()),
-        scan_sub_(nh_, "scan", rmw_qos_profile_sensor_data),
+        scan_sub_(nh_, "merged_scan", rmw_qos_profile_sensor_data),
         tf_filter_(scan_sub_, buffer_, "base_link", 50, nh_),
         filter_chain_("sensor_msgs::msg::LaserScan")
   {
@@ -93,7 +93,7 @@ public:
 
     std::function<void(const sensor_msgs::msg::LaserScan::SharedPtr)> standard_callback =
       std::bind(&GenericLaserScanFilterNode::foo, this, std::placeholders::_1);
-    nh_->create_subscription<sensor_msgs::msg::LaserScan>("scan", rclcpp::SensorDataQoS(), standard_callback);
+    nh_->create_subscription<sensor_msgs::msg::LaserScan>("merged_scan", rclcpp::SensorDataQoS(), standard_callback);
 
     deprecation_timer_ = nh_->create_wall_timer(5s, [this]() {
       RCLCPP_WARN(

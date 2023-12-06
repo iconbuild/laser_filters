@@ -66,7 +66,7 @@ public:
       : nh_(node),
         tf_(NULL),
         buffer_(nh_->get_clock()),
-        scan_sub_(nh_, "scan", rmw_qos_profile_sensor_data),
+        scan_sub_(nh_, "merged_scan", rmw_qos_profile_sensor_data),
         tf_filter_(NULL),
         filter_chain_("sensor_msgs::msg::LaserScan")
   {
@@ -94,7 +94,7 @@ public:
     }
     
     // Advertise output
-    output_pub_ = nh_->create_publisher<sensor_msgs::msg::LaserScan>("scan_filtered", 1000);
+    output_pub_ = nh_->create_publisher<sensor_msgs::msg::LaserScan>("filtered_scan", 1000);
   }
 
   // Destructor
