@@ -12,7 +12,7 @@ def generate_launch_description():
             parameters=[
                 PathJoinSubstitution([
                     get_package_share_directory("laser_filters"),
-                    "examples", "box_filter_example.yaml",
+                    "config", "box_filter.yaml",
                 ])],
         )
     ])
