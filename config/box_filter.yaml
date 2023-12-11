@@ -6,7 +6,7 @@ scan_to_scan_filter_chain:
       params:
         box_frame: base_link
         max_x: 0.37
-        max_y: 0.255
+        max_y: 0.26
         max_z: 2.0
         min_x: -0.5
         min_y: -0.55
