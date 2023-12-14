@@ -89,7 +89,7 @@ public:
                                                          laser_max_range_(DBL_MAX),
                                                          buffer_(nh_->get_clock()),
                                                          tf_(buffer_),
-                                                         sub_(nh_, "merged_scan", rmw_qos_profile_sensor_data),
+                                                         sub_(nh_, "scan", rmw_qos_profile_sensor_data),
                                                          filter_(sub_, buffer_, "", 50, nh_),
                                                          cloud_filter_chain_("sensor_msgs::msg::PointCloud2"),
                                                          scan_filter_chain_("sensor_msgs::msg::LaserScan")
@@ -119,7 +119,7 @@ public:
       nh_->get_node_timers_interface());
     buffer_.setCreateTimerInterface(timer_interface);
                                                            
-    sub_.subscribe(nh_, "merged_scan", rmw_qos_profile_sensor_data);
+    sub_.subscribe(nh_, "scan", rmw_qos_profile_sensor_data);
 
     filter_.connectInput(sub_);
 
