@@ -5,7 +5,7 @@ rplidar/scan_to_scan_filter_chain:
       type: laser_filters/LaserScanRangeFilter
       params:
         use_message_range_limits: false
-        upper_threshold: 4.0
+        upper_threshold: 3.0 # Stops wavefront behavior (noticed around 3.7m)
         lower_threshold: 0.05
     filter2:
       name: box_filter
